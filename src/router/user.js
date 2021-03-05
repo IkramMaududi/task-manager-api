@@ -143,6 +143,8 @@ router.post(
 	async (req, res) => { 
 		const buffer = await sharp(req.file.buffer).resize({ width: 300, height: 300 }).png().toBuffer();
 		req.user.avatar = buffer;
+		// console.log(req.file.buffer);
+		// console.log(buffer);
 		await req.user.save();
 		res.send(); 
 	},
